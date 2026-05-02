@@ -18,20 +18,18 @@ fi
 
 echo "[3/5] Activating virtual environment..."
 if [ -f "venv/Scripts/activate" ]; then
-    source venv/Scripts/activate
+    VENV_PIP="venv/Scripts/pip"
+    ACTIVATE_CMD="source venv/Scripts/activate"
 else
-    source venv/bin/activate
+    VENV_PIP="venv/bin/pip"
+    ACTIVATE_CMD="source venv/bin/activate"
 fi
 
 echo "[4/5] Upgrading pip..."
-python -m pip install --upgrade pip
+$VENV_PIP install --upgrade pip
 
 echo "[5/5] Installing dependencies..."
-pip install -r requirements.txt
+$VENV_PIP install -r requirements.txt
 
 echo ""
-if [ -f "venv/Scripts/activate" ]; then
-    echo "Setup complete. Run 'source venv/Scripts/activate' then 'python manage.py runserver' to start."
-else
-    echo "Setup complete. Run 'source venv/bin/activate' then 'python manage.py runserver' to start."
-fi
+echo "Setup complete. Run '$ACTIVATE_CMD' then 'python manage.py runserver' to start."

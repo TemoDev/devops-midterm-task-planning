@@ -30,3 +30,8 @@ Thumbs.db
 .vscode/
 .idea/
 *.swp
+
+# Blue-green deployment
+logs/*
+!logs/.gitkeep
+.active_slot
