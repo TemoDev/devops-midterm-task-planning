@@ -228,3 +228,43 @@ Expected output format:
 | `dev` | Active development |
 
 All changes are developed on `dev` and merged into `main` via pull request once CI passes.
+
+## Full demo deployment flow
+
+### Initial deployment
+From scratch, first we deploy initial application version and switch traffic to that port: 
+
+![Demo deploy](screenshots/demo_deployment.png)
+![Demo deploy UI](screenshots/demo_deploy_UI.png)
+![Demo deploy UI detail](screenshots/demo_deploy_task_detail.png)
+
+In second WSL terminal let's monitor health: 
+![Demo deploy health monitoring](screenshots/demo_deploy_health.png)
+
+### Deployment of new version
+
+I made this small change to the UI, just for it to be visible:
+![Demo change](screenshots/demo_deploy_code.png)
+
+Now let's deploy this changes: 
+![Demo deploy new](screenshots/deploy_demo_new.png)
+
+Now we can check if both instances are running:
+![Demo deploy new](screenshots/demo_deploy_instances_check.png)
+![Demo deploy switch traffic to new](screenshots/switch_traffic_to_new.png)
+
+---
+
+We can check with UI that both instances are running as well:
+![Demo deploy new](screenshots/both_instances_running.png)
+And default traffic goes to localhost(on port 8002):
+![Demo deploy new](screenshots/main_traffic.png)
+
+---
+
+We can also test rollback:
+![Rollback terminal](screenshots/test_rollback.png)
+Here below we can see that traffic is back to 8001 port on default localhost:
+![Rollback UI](screenshots/rollback_UI.png)
+
+
